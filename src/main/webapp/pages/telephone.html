@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Telephone-Addition</title>
+</head>
+<body>
+<form th:action="@{/addTelephone/addTelephone}" th:object="${telephone}"  th:method="post">
+    <input type="text" th:field="*{number}"/>Number
+    <input type="text" th:field="*{category}"/>Category
+    <button>Addition</button>
+    <div th:object="${userAndHisTelephones}">
+    <div th:each="item :${userAndHisTelephones.getTelephones()}">
+        <h4>
+            <div th:text="${item.getNumber()}"></div>
+        </h4>
+        <h3>
+            <div th:text="${item.getCategory()}"></div>
+        </h3>
+</div>
+</div>
+</form>
+</body>
+</html>

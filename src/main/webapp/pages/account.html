@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+</head>
+<body>
+<div th:action="@{/userPage/userPage}"  th:method="get">
+       <div th:text="${'Hello '+ session.userAuth.getName()}"></div>
+    <a href="/addTelephone/addTelephone">Add telephone</a>
+    <a href="/addAddress/addAddress">Add address</a>
+</div>
+</body>
+</html>
