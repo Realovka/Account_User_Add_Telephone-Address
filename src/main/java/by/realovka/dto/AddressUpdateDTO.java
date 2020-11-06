@@ -1,37 +1,22 @@
-package by.realovka.entity;
+package by.realovka.dto;
 
-import javax.persistence.*;
 
-@Entity
-@Table (name = "addresses")
-public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AddressUpdateDTO {
     private long id;
     private String city;
     private String street;
     private String house;
     private String flat;
-    private String category;
 
-    public Address(long id, String city, String street, String house, String flat, String category) {
+    public AddressUpdateDTO(long id, String city, String street, String house, String flat) {
         this.id = id;
         this.city = city;
         this.street = street;
         this.house = house;
         this.flat = flat;
-        this.category = category;
     }
 
-    public Address(String city, String street, String house, String flat, String category) {
-        this.city = city;
-        this.street = street;
-        this.house = house;
-        this.flat = flat;
-        this.category = category;
-    }
-
-    public Address() {
+    public AddressUpdateDTO() {
     }
 
     public long getId() {
@@ -72,13 +57,5 @@ public class Address {
 
     public void setFlat(String flat) {
         this.flat = flat;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 }

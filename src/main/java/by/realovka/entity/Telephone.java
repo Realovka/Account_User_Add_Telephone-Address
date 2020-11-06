@@ -1,9 +1,5 @@
 package by.realovka.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 
@@ -25,6 +21,10 @@ public class Telephone {
     public Telephone(String number, String category) {
         this.number = number;
         this.category = category;
+    }
+
+    public Telephone(String number) {
+        this.number = number;
     }
 
     public Telephone() {

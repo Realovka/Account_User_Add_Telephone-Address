@@ -5,10 +5,38 @@
     <title>Account</title>
 </head>
 <body>
-<div th:action="@{/userPage/userPage}"  th:method="get">
-       <div th:text="${'Hello '+ session.userAuth.getName()}"></div>
-    <a href="/addTelephone/addTelephone">Add telephone</a>
-    <a href="/addAddress/addAddress">Add address</a>
+<div th:action="@{/userPage/userPage}" th:method="get">
+    <h2 th:text="${'Hello '+ session.userAuth.getName()}"></h2>
+
+    <a href="/addTelephone/addTelephone">Your telephones</a>
+    <a href="/addAddress/addAddress">Your addresses</a>
+
+
+    <div th:if="${userAndHisTelephonesAndAddresses.getTelephones().size()>0}">
+        <h3><ins>Telephones</ins></h3>
+        <div th:object="${userAndHisTelephonesAndAddresses}">
+            <div th:each="item :${userAndHisTelephonesAndAddresses.getTelephones()}">
+                <h3>
+                    <div th:text="${item.getNumber()+' '+item.getCategory()}"></div>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+        <div th:if="${userAndHisTelephonesAndAddresses.getAddresses().size()>0}">
+            <h3><ins>Addresses</ins></h3>
+            <div th:object="${userAndHisTelephonesAndAddresses}">
+                <div th:each="item :${userAndHisTelephonesAndAddresses.getAddresses()}">
+                    <h3>
+                        <div th:text="${item.getCity()+' '+item.getStreet()+' '+item.getHouse()+' '+item.getFlat()+' '+item.getCategory()}"></div>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 </body>
 </html>

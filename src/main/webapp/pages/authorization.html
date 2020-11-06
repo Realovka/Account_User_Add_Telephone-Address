@@ -6,9 +6,9 @@
 </head>
 <body>
 <form th:action="@{/reg-auth/auth}" th:object="${userAuth}" method="post">
-    <input type="text" th:field="*{loginUserAuthDTO}"/>Login
+    <p><input type="text" th:field="*{loginUserAuthDTO}"/>Login</p>
     <p th:if="${#fields.hasErrors('loginUserAuthDTO')}" th:errors="*{loginUserAuthDTO}">You need to enter more characters</p>
-    <input type="text" th:field="*{passwordUserAuthDTO}"/>Password
+    <p><input type="text" th:field="*{passwordUserAuthDTO}"/>Password</p>
     <p th:if="${#fields.hasErrors('passwordUserAuthDTO')}" th:errors="*{passwordUserAuthDTO}">You need to enter more characters</p>
     <button>Authorization</button>
 </form>

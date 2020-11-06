@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Street</title>
+</head>
+<body>
+<h3>Update Street</h3>
+<form th:action="@{/updateStreet/updateStreet/{id} (id=${street.getId()})}" th:object="${street}" th:method="post">
+    <p><input type="text" th:field="*{street}">Street</p>
+    <p th:if="${#fields.hasErrors('street')}" th:errors="*{street}">You need to enter more characters</p>
+    <button>Update street</button>
+</form>
+</body>
+</html>

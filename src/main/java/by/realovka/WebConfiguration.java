@@ -17,7 +17,6 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -33,9 +32,6 @@ public class WebConfiguration {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-//        driverManagerDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/pharmacy?serverTimezone=UTC" );
-//        driverManagerDataSource.setUsername("root");
         driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
         driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
         driverManagerDataSource.setUsername("postgres");
@@ -64,7 +60,6 @@ public class WebConfiguration {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-//        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.show_sql", "true");
         return properties;
     }

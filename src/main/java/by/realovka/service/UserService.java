@@ -1,9 +1,11 @@
 package by.realovka.service;
 
 import by.realovka.dao.UserDaoImpl;
+import by.realovka.dto.AddressDTO;
 import by.realovka.dto.TelephoneDTO;
 import by.realovka.dto.UserAuthDTO;
 import by.realovka.dto.UserRegDTO;
+import by.realovka.entity.Address;
 import by.realovka.entity.Telephone;
 import by.realovka.entity.User;
 import by.realovka.service.Exception.NoSuchUserException;
@@ -11,7 +13,7 @@ import by.realovka.service.Exception.SuchUserIsPresent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -48,12 +50,19 @@ public class UserService {
         return userDaoImpl.findUserByLogin(user.getLogin());
     }
 
-    public void updateUserAddTelephone(User userAuth, TelephoneDTO telephoneDTO){
-        List<Telephone> telephones = new ArrayList<>();
+    public void updateUserAddTelephone(User userAuth, TelephoneDTO telephoneDTO, HttpSession httpSession){
+       List<Telephone> telephones=(List<Telephone>) httpSession.getAttribute("telephones");
         Telephone telephone = new Telephone(telephoneDTO.getNumber(),telephoneDTO.getCategory());
         telephones.add(telephone);
         userAuth.setTelephones(telephones);
         userDaoImpl.updateUser(userAuth);
+    }
 
+    public void updateUserAddAddress(User userAuth, AddressDTO addressDTO, HttpSession httpSession){
+        List<Address> addresses = (List<Address>) httpSession.getAttribute("addresses");
+        Address address = new Address(addressDTO.getCity(),addressDTO.getStreet(),addressDTO.getHouse(),addressDTO.getFlat(),addressDTO.getCategory());
+        addresses.add(address);
+        userAuth.setAddresses(addresses);
+        userDaoImpl.updateUser(userAuth);
     }
 }

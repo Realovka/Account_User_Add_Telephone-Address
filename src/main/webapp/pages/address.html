@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Address</title>
+</head>
+<body>
+<form th:action="@{/addAddress/addAddress}" th:method="post">
+    <div th:object="${address}">
+        <p><input type="text" th:field="*{city}"/>City</p>
+        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">You need to enter more characters</p>
+        <p><input type="text" th:field="*{street}"/>Street</p>
+        <p th:if="${#fields.hasErrors('street')}" th:errors="*{street}">You need to enter more characters</p>
+        <p><input type="text" th:field="*{house}"/>House</p>
+        <p th:if="${#fields.hasErrors('house')}" th:errors="*{house}">You need to enter more characters</p>
+        <p><input type="text" th:field="*{flat}"/>Flat</p>
+        <p th:if="${#fields.hasErrors('flat')}" th:errors="*{flat}">You need to enter more characters</p>
+        <p><input type="text" th:field="*{category}"/>Category</p>
+        <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}">You need to enter more characters</p>
+        <button>Add Address</button>
+    </div>
+    <div th:if="${userAndHisAddresses.getAddresses().size()>0}">
+        <div th:each="item :${userAndHisAddresses.getAddresses()}">
+            <h4>
+                <div th:text="${item.getCity()+' '+item.getStreet()+' '+item.getHouse()+' '+item.getFlat()+' '+item.getCategory()}"></div>
+                    <a th:href="@{/updateAddress/updateAddress/{id}(id=${item.getId()})}">Update Address</a>
+                    <a th:href="@{/deleteAddress/deleteAddress/{id}(id=${item.getId()})}">Delete Address</a>
+            </h4>
+        </div>
+    </div>
+    <a href="/userPage/userPage">Account</a>
+</form>
+</body>
+</html>

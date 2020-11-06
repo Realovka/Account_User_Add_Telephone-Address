@@ -2,23 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Telephone-Addition</title>
+    <title>Your Telephones</title>
 </head>
 <body>
-<form th:action="@{/addTelephone/addTelephone}" th:object="${telephone}"  th:method="post">
-    <input type="text" th:field="*{number}"/>Number
-    <input type="text" th:field="*{category}"/>Category
-    <button>Addition</button>
-    <div th:object="${userAndHisTelephones}">
-    <div th:each="item :${userAndHisTelephones.getTelephones()}">
-        <h4>
-            <div th:text="${item.getNumber()}"></div>
-        </h4>
-        <h3>
-            <div th:text="${item.getCategory()}"></div>
-        </h3>
-</div>
-</div>
+<form th:action="@{/addTelephone/addTelephone}" th:method="post">
+
+    <div th:object="${telephone}">
+        <p><input type="text" th:field="*{number}"/>Number</p>
+        <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}">You need to enter more characters</p>
+        <p><input type="text" th:field="*{category}"/>Category</p>
+        <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}">You need to enter more characters</p>
+        <button>Add Telephone</button>
+    </div>
+
+    <div th:if="${userAndHisTelephones.getTelephones().size()>0}">
+        <div th:each="item :${userAndHisTelephones.getTelephones()}">
+            <h4>
+                <div th:text="${item.getNumber() + ' ' + item.getCategory()}"></div>
+                <a th:href="@{/updateTelephone/updateTelephone/{id}(id=${item.getId()})}">Update</a>
+                <a th:href="@{/deleteTelephone/deleteTelephone/{id}(id=${item.getId()})}">Delete</a>
+            </h4>
+        </div>
+    </div>
+
+
+    <a href="/userPage/userPage">Account</a>
 </form>
 </body>
 </html>

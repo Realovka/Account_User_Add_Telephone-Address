@@ -6,11 +6,11 @@
 </head>
 <body>
 <form th:action="@{/reg-auth/reg}" th:object="${userReg}" method="post">
-    <input type="text" th:field="*{nameUserRegDTO}"/>Name
+    <p><input type="text" th:field="*{nameUserRegDTO}"/>Name</p>
     <p th:if="${#fields.hasErrors('nameUserRegDTO')}" th:errors="*{nameUserRegDTO}">You need to enter more characters</p>
-    <input type="text" th:field="*{loginUserRegDTO}"/>Login
+    <p><input type="text" th:field="*{loginUserRegDTO}"/>Login</p>
     <p th:if="${#fields.hasErrors('loginUserRegDTO')}" th:errors="*{loginUserRegDTO}">You need to enter more characters</p>
-    <input type="text" th:field="*{passwordUserRegDTO}"/>Password
+    <p><input type="text" th:field="*{passwordUserRegDTO}"/>Password</p>
     <p th:if="${#fields.hasErrors('passwordUserRegDTO')}" th:errors="*{passwordUserRegDTO}">You need to enter more characters</p>
     <button>Registration</button>
 </form>

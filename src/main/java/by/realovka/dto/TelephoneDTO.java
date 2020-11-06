@@ -17,6 +17,10 @@ public class TelephoneDTO {
         this.category = category;
     }
 
+    public TelephoneDTO(String number) {
+        this.number = number;
+    }
+
     public TelephoneDTO() {
     }
 

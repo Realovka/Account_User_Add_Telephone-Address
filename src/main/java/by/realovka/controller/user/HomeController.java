@@ -1,4 +1,4 @@
-package by.realovka.controller;
+package by.realovka.controller.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

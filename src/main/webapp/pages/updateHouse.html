@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update House</title>
+</head>
+<body>
+<form th:action="@{/updateHouse/updateHouse/{id} (id=${house.getId()})}" th:object="${house}" th:method="post">
+    <p><input type="text" th:field="*{house}">House</p>
+    <p th:if="${#fields.hasErrors('house')}" th:errors="*{house}">You need to enter more characters</p>
+    <button>Update house</button>
+</form>
+</body>
+</html>

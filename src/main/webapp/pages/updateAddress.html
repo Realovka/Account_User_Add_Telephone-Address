@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Address</title>
+</head>
+<body>
+<h3>Update address</h3>
+<label>What field do you want to update?</label><br>
+<div th:action="@{/updateAddress/updateAddress/{id}(id=${updateAddress.getId()})}" th:object="${updateAddress}" th:method="get">
+<a th:href="@{/updateCity/updateCity/{id} (id=${updateAddress.getId()})}">City</a>
+<a th:href="@{/updateStreet/updateStreet/{id} (id=${updateAddress.getId()})}">Street</a>
+<a th:href="@{/updateHouse/updateHouse/{id} (id=${updateAddress.getId()})}">House</a>
+<a th:href="@{/updateFlat/updateFlat/{id} (id=${updateAddress.getId()})}">Flat</a>
+</div>
+</body>
+</html>
