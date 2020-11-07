@@ -18,9 +18,11 @@ public class User {
     private String password;
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name="user_id", referencedColumnName = "id")
     private List<Telephone> telephones;
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name="user_id", referencedColumnName = "id")
     private List<Address> addresses;
 
     public User(String name, String login, String password) {
