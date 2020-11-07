@@ -9,7 +9,7 @@ import by.realovka.entity.Address;
 import by.realovka.entity.Telephone;
 import by.realovka.entity.User;
 import by.realovka.service.Exception.NoSuchUserException;
-import by.realovka.service.Exception.SuchUserIsPresent;
+import by.realovka.service.Exception.SuchUserIsPresentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +38,7 @@ public class UserService {
 
     public boolean findByLogin(UserRegDTO userRegDTO){
         if(userDaoImpl.findByLogin(userRegDTO.getLoginUserRegDTO())){
-            throw new SuchUserIsPresent();
+            throw new SuchUserIsPresentException();
         } else return false;
     }
 
